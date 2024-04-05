@@ -25,4 +25,6 @@ urlpatterns = [
     path('new-blog', views.new_blog, name="new-blog"),
     path('create', views.create, name="create"),
     path('<int:id>', views.detail, name="detail"),
+    path('edit/<int:id>', views.edit, name="edit"),
+    path('update/<int:id>', views.update, name="update"),
 ]

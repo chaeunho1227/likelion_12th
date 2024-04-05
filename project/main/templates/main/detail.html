@@ -4,7 +4,9 @@
 <h3>{{blog.title}}</h3>
 작성자 : {{blog.writer}}
 날짜 : {{blog.pub_date}}
-<hr/>
+<hr />
 <p>{{blog.body}}</p>
+<a href="{% url 'edit' blog.id %}">글 수정하기</a>
 <br>
 {% endblock %}
+
