@@ -9,8 +9,8 @@
     <p><img src="{{ blog.image.url }}" alt="사진" width="100px"></p>
 {% endif %}
 <p>{{blog.body}}</p>
-<a href="{% url 'edit' blog.id %}">글 수정하기</a>
-<a href="{% url 'delete' blog.id %}">삭제하기</a>
+<a href="{% url 'main:edit' blog.id %}">글 수정하기</a>
+<a href="{% url 'main:delete' blog.id %}">삭제하기</a>
 <br>
 {% endblock %}
 

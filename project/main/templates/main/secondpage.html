@@ -9,7 +9,7 @@
         <h3>{{blog.title}}</h3>
         {{blog.writer}} | {{blog.pub_date}}<br>
         {{blog.summary}}
-        <a href="{% url 'detail' blog.id %}">자세히 보기</a>
+        <a href="{% url 'main:detail' blog.id %}">자세히 보기</a>
         <br>
     </div>
     {% endfor %}

@@ -37,7 +37,7 @@ def create(request):
     # new_blog 객체를 저장
     new_blog.save()
 
-    return redirect('detail', new_blog.id)
+    return redirect('main:detail', new_blog.id)
 
 # 데이터베이스에 업데이트 된 내용을 저장하는 함수
 def update(request, id):
@@ -51,11 +51,11 @@ def update(request, id):
     
     update_blog.save()
 
-    return redirect('detail', update_blog.id)
+    return redirect('main:detail', update_blog.id)
 
 # 데이터베이스에서 객체를 제거하는 함수
 def delete(request, id):
     delete_blog = Blog.objects.get(pk=id)
     delete_blog.delete()
-    return redirect('secondpage')
+    return redirect('main:secondpage')
 
