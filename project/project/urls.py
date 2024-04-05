@@ -24,4 +24,5 @@ urlpatterns = [
     path('second', views.secondpage, name="secondpage"),
     path('new-blog', views.new_blog, name="new-blog"),
     path('create', views.create, name="create"),
+    path('<int:id>', views.detail, name="detail"),
 ]

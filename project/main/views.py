@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect # render : 템플릿을 불러옴 / redirect : URL로 연결
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone #Django에서 제공하는 시간 관련 유틸리티 모듈
 
 from .models import Blog
@@ -12,9 +12,14 @@ def mainpage(request):
     }
     return render(request, 'main/mainpage.html', context)
 def secondpage(request):
-    return render(request, 'main/secondpage.html')
+    blogs = Blog.objects.all()
+    return render(request, 'main/secondpage.html', {'blogs': blogs})
 def new_blog(request):
     return render(request, 'main/new-blog.html')
+
+def detail(request, id):
+    blog = get_object_or_404(Blog, pk = id)
+    return render(request, 'main/detail.html', {'blog':blog})
 
 # 데이터베이스에 저장하는 함수
 def create(request):
