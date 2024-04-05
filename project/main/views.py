@@ -50,3 +50,10 @@ def update(request, id):
     update_blog.save()
 
     return redirect('detail', update_blog.id)
+
+# 데이터베이스에서 객체를 제거하는 함수
+def delete(request, id):
+    delete_blog = Blog.objects.get(pk=id)
+    delete_blog.delete()
+    return redirect('secondpage')
+
