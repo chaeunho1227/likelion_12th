@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone #Django에서 제공하는 시간 관련 유틸리티 모듈
+from django.core.files.storage import default_storage
 
 from .models import Blog
 
@@ -46,8 +47,12 @@ def update(request, id):
     update_blog.title = request.POST['title']
     update_blog.writer = request.POST['writer']
     update_blog.body = request.POST['body']
-    update_blog.pub_date = timezone.now()
-    update_blog.image = request.FILES.get('image')
+    update_blog.pub_date = timezone.now()    
+    
+    # 파일이 제출되었는지 확인
+    if request.FILES.get('image'):
+        update_blog.image = request.FILES['image']
+    # 파일이 제출되지 않았다면, 기존 이미지는 그대로 유지
     
     update_blog.save()
 
@@ -57,5 +62,6 @@ def update(request, id):
 def delete(request, id):
     delete_blog = Blog.objects.get(pk=id)
     delete_blog.delete()
+    default_storage.delete(delete_blog.image.path)
     return redirect('main:secondpage')
 
