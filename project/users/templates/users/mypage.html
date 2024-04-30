@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+User : {{user}} <br>
+UserProfile : {{user.profile}} <br>
+
+UserProfileNickname : {{user.profile.nickname}} <br>
+UserProfileDepartment : {{user.profile.department}} <br>
+
+
+{% endblock %}
+
